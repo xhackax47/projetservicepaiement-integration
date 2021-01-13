@@ -37,14 +37,11 @@ public class RabbitMQConsumer {
 			HttpHeaders headers = new HttpHeaders(); headers.setContentType(MediaType.APPLICATION_JSON);
 			HttpEntity<String> request = new HttpEntity<>(obj.toString() , headers);
 			restTemplate.postForObject("http://localhost:8000/ValidationPayment/", request, String.class);
-		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	
-		System.out.println("Recieved Message From RabbitMQ: " + pay.toString());
+		System.out.println("Paiement effectué et validé : " + pay.toString());
 	}
 }
